@@ -64,7 +64,6 @@ public class SecurityConfig {
             authorities.forEach((authority) -> {
                 if (authority instanceof OidcUserAuthority oidcAuth) {
                     mappedAuthorities.addAll(mapAuthorities(oidcAuth.getIdToken().getClaims()));
-                    System.out.println(oidcAuth.getAttributes());
                 } else if (authority instanceof OAuth2UserAuthority oauth2Auth) {
                     mappedAuthorities.addAll(mapAuthorities(oauth2Auth.getAttributes()));
                 }
