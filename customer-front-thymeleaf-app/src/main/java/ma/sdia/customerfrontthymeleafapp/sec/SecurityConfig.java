@@ -30,8 +30,11 @@ public class SecurityConfig {
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         return http
+                //we have here server app, so we will use stateful auth
                 .csrf(Customizer.withDefaults())
+                //some requests don't need auth
                 .authorizeHttpRequests(ar->ar.requestMatchers("/","/oauth2Login/**","/webjars/**","/h2-console/**").permitAll())
+                //to get to any request we need to auth
                 .authorizeHttpRequests(ar->ar.anyRequest().authenticated())
                 .headers(h->h.frameOptions(fo->fo.disable()))
                 .csrf(csrf->csrf.ignoringRequestMatchers("/h2-console/**"))
