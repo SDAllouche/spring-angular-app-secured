@@ -25,6 +25,19 @@ services:
       PMA_HOST: mysql-db-inventory
       PMA_PORT: 3306
       PMA_ARBITRARY: 1
+  inventory-service:
+    build: ./inventory-service
+    container_name: inventory-service
+    ports:
+      - '8092:8092'
+    expose:
+      - '8092'
+    restart: always
+    depends_on:
+      mysql-db-inventory:
+        condition: service_healthy
+    environment:
+      - DB_URL=jdbc:mysql://mysql-db-inventory:3306/inventory-db
 
 volumes:
   mysql_data:
