@@ -80,7 +80,9 @@ services:
       #KEYCLOAK_IMPORT: /opt/jboss/keycloak/imports/realm-export.json
     volumes:
       - ./:/opt/keycloak/data/import
-    command: -v start-dev --import-realm
+    command:
+      - start-dev
+      - --import-realm
     restart: always
     ports:
       - '8080:8080'
