@@ -34,8 +34,7 @@ services:
       - '8092'
     restart: always
     depends_on:
-      mysql-db-inventory:
-        condition: service_healthy
+      - mysql-db-inventory
     environment:
       - DB_URL=jdbc:mysql://mysql-db-inventory:3306/inventory-db
       - JWT_ISSUER_URI=http://localhost:8080/realms/sdia-realm
@@ -89,8 +88,7 @@ services:
     expose:
       - '8080'
     depends_on:
-      postgres-service:
-        condition: service_healthy
+      - postgres-service
   customer-service-thymeleaf:
     build: ./customer-front-thymeleaf-app
     container_name: customer-service-thymeleaf
