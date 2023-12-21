@@ -76,12 +76,8 @@ services:
       KC_HTTP_ENABLED: "true"
       KC_HOSTNAME_STRICT_HTTPS: "false"
       KEYCLOAK_ADMIN_PASSWORD: admin123
-      #KEYCLOAK_IMPORT: /opt/jboss/keycloak/imports/realm-export.json
-    #volumes:
-    #  - ./:/opt/keycloak/data/import
     command:
       - start-dev
-    #  - --import-realm
     restart: always
     ports:
       - '8080:8080'
