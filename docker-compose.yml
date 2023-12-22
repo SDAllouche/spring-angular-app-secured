@@ -7,8 +7,8 @@ services:
       - mysql_data:/var/lib/mysql
     environment:
       MYSQL_DATABASE: inventory-db
-      MYSQL_USER: root
-      MYSQL_PASSWORD: root
+      MYSQL_USER: sda
+      MYSQL_PASSWORD: sda123
       MYSQL_ROOT_PASSWORD: admin
     ports:
       - 3306:3306
